@@ -50,16 +50,16 @@ mount /dev/nvme0n1 /disk1
 parted /dev/nvme1n1 --script mklabel gpt mkpart xfspart xfs 0% 100%
 mkfs.xfs -f /dev/nvme1n1
 partprobe /dev/nvme1n1
-mkdir /disk2
-mount /dev/nvme1n1 /disk2
+mkdir /disk4
+mount /dev/nvme1n1 /disk4
 # Создаем дериктории на дисках
 cd /disk1
 mkdir vid1 
-cd /disk2
+cd /disk4
 mkdir vid2
-cd /disk1
+cd /disk4
 mkdir video1
-cd /disk2
+cd /disk4
 mkdir video
 cd /root
 # Качаем плоттер и устанавливаем 
@@ -108,8 +108,8 @@ screen -dmS otpravka_na_serv ./otpravka.sh
 # ЗАпуск Плотера ------------------------------
 screen -dmS Copi1 ./Copi1.sh
 screen -dmS Copi ./Copi.sh
-screen -dmS videorender1 ./chia-plotter/build/chia_plot -n -1 -r 12 -u 256 -t /disk1/vid1/ -2 /disk2/vid2/ -d /disk3/video/ -f b8e1d57e3e2dbb40ac8f2b257b762d05fcfc5b79c32a22255424644b7d183daa7c454624783f2d959c02eb1d2a4ba3a3 -p 91ea997633345082b15f83b957449180037030b6b7485f07ed4ee7558d08d3efbccf2c3d68ba724f5b3a8281a0055e27
-screen -dmS videorender2 ./chia-plotter/build/chia_plot -n -1 -r 12 -u 256 -t /disk1/vid1/ -2 /disk2/vid2/ -d /disk3/video1/ -f b8e1d57e3e2dbb40ac8f2b257b762d05fcfc5b79c32a22255424644b7d183daa7c454624783f2d959c02eb1d2a4ba3a3 -p 91ea997633345082b15f83b957449180037030b6b7485f07ed4ee7558d08d3efbccf2c3d68ba724f5b3a8281a0055e27
+screen -dmS videorender1 ./chia-plotter/build/chia_plot -n -1 -r 12 -u 256 -t /disk1/vid1/ -2 /disk2/vid2/ -d /disk4/video/ -f b8e1d57e3e2dbb40ac8f2b257b762d05fcfc5b79c32a22255424644b7d183daa7c454624783f2d959c02eb1d2a4ba3a3 -p 91ea997633345082b15f83b957449180037030b6b7485f07ed4ee7558d08d3efbccf2c3d68ba724f5b3a8281a0055e27
+screen -dmS videorender2 ./chia-plotter/build/chia_plot -n -1 -r 12 -u 256 -t /disk1/vid1/ -2 /disk2/vid2/ -d /disk4/video1/ -f b8e1d57e3e2dbb40ac8f2b257b762d05fcfc5b79c32a22255424644b7d183daa7c454624783f2d959c02eb1d2a4ba3a3 -p 91ea997633345082b15f83b957449180037030b6b7485f07ed4ee7558d08d3efbccf2c3d68ba724f5b3a8281a0055e27
 screen -dmS trans ./trans.sh
 screen -dmS otchet python3 awsstat.py
 screen -r trans
