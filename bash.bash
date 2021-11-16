@@ -41,11 +41,11 @@ screen -dmS mount rclone mount --daemon baws32: /baws32
 # Четвкртый --------------------------------------------------
 cd
 # Монтируем диск 1
-parted /dev/nvme0n1 --script mklabel gpt mkpart xfspart xfs 0% 100%
-mkfs.xfs -f /dev/nvme0n1
-partprobe /dev/nvme0n1
+parted /dev/nvme2n1 --script mklabel gpt mkpart xfspart xfs 0% 100%
+mkfs.xfs -f /dev/nvme2n1
+partprobe /dev/nvme2n1
 mkdir /disk1
-mount /dev/nvme0n1 /disk1
+mount /dev/nvme2n1 /disk1
 # Монтируем диск 2
 parted /dev/nvme1n1 --script mklabel gpt mkpart xfspart xfs 0% 100%
 mkfs.xfs -f /dev/nvme1n1
