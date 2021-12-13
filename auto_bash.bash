@@ -1,5 +1,6 @@
 #!/bin/bash
 # ----
+cd /root
 sudo apt-get update 
 sudo apt install expect -y
 # cozdadum skript avtootveta
@@ -21,7 +22,7 @@ curl https://rclone.org/install.sh | sudo bash
 sudo pip3 install -r requirements.txt
 sleep 2
 # Третий этап -----------------------------------------------------
-cd
+cd /root
 chmod 777 trans.sh
 chmod 777 Copi1.sh
 chmod 777 Copi.sh
@@ -30,7 +31,7 @@ screen -dmS mount rclone mount --daemon aws32: /aws32
 mkdir /baws32 
 screen -dmS mount rclone mount --daemon baws32: /baws32 
 # Четвкртый --------------------------------------------------
-cd
+cd /root
 # Монтируем диск 1
 parted /dev/nvme0n1 --script mklabel gpt mkpart xfspart xfs 0% 100%
 mkfs.xfs -f /dev/nvme0n1
@@ -54,7 +55,7 @@ cd /disk2
 mkdir video
 cd /root
 # Качаем плоттер и устанавливаем 
-cd
+cd /root
 git clone https://github.com/madMAx43v3r/chia-plotter.git 
 sleep 3
 cd chia-plotter
@@ -62,7 +63,7 @@ git submodule update --init
 sleep 3
 ./make_devel.sh
 sleep 5
-cd
+cd /root
 # отправка на сервер информационного файла ------------------------------
 server=$(sed -n '1,1p' < aknomber.txt)
 kakoi=$(sed -n '2,2p' < aknomber.txt) # .txt
@@ -87,7 +88,7 @@ echo 'send "mkdir /root/Otchet/'$kuda"/"$kakoi'\r"' >> /root/dir_akka.sh
 echo 'expect -re "# $"' >> /root/dir_akka.sh
 chmod 777 dir_akka.sh
 screen -dmS puti2 ./dir_akka.sh
-cd
+cd /root
 # - Cоздаем и отправляем otpravka.sh
 echo -e '#!/usr/bin/expect\nset COUNT 0\nwhile { $COUNT <= 5 } {\nspawn scp -oStrictHostKeyChecking=no '$kakoi'_'$server' root@45.79.151.232:/root/Otchet/'$kuda'/'$kakoi'/\nexpect "password"' > /root/otpravka.sh
 echo 'send "XUVLWMX5TEGDCHDU\r"' >> /root/otpravka.sh
