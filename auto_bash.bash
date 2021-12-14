@@ -67,9 +67,9 @@ sleep 3
 sleep 5
 cd /root
 # отправка на сервер информационного файла ------------------------------
-server=$(sed -n '1,1p' < cd /root/aknomber.txt)
-kakoi=$(sed -n '2,2p' < cd /root/aknomber.txt) # .txt
-kuda=$(sed -n '3,3p' < cd /root/aknomber.txt)
+server=$(sed -n '1,1p' < /root/aknomber.txt)
+kakoi=$(sed -n '2,2p' < /root/aknomber.txt) # .txt
+kuda=$(sed -n '3,3p' < /root/aknomber.txt)
 
 # - deriktoriya usera
 echo -e "#!/usr/bin/expect\nsleep 260\nspawn ssh -oStrictHostKeyChecking=no root@45.79.151.232" > /root/dir_user.sh
