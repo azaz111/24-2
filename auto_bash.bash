@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 # ----
 cd /root
 sudo apt-get update 
